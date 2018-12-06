@@ -1,0 +1,12 @@
+<div class="sidebar" id="sidebar">
+  <fa class="sidebar__close" (click)="closeMenu()" name="close"></fa>
+
+  <ul class="sidebar__menu">
+    <li [ngClass]="route == '/characters' ? 'active' : ''" (click)="navTo('characters')" class="menu__item">
+      Characters
+    </li>
+    <li [ngClass]="route == '/planets' ? 'active' : ''" (click)="navTo('planets')" class="menu__item">
+      Planets
+    </li>
+  </ul>
+</div>

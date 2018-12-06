@@ -1,0 +1,94 @@
+
+<div id="modal" class="modal">
+    <div class="modal-background"></div>
+    <div *ngIf="modalItem" class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">{{modalItem.name}}</p>
+        <button (click)="closeModal()" class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+
+        <div class="modal-body-item" *ngIf="modalItem.residentsData[0]">
+          <strong>Residents:</strong>
+          <ul>
+            <li *ngFor="let item of modalItem.residentsData"> {{item.name}}; </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+  <fa class="hamburguer" (click)="openMenu()" name="bars"></fa>
+  <div class="container" *ngIf="peoplePage">
+  
+    <div class="content">
+  
+      <h1 class="title">Star Wars: Planets</h1>
+      
+      <form (submit)="search($event)" class="table__search">
+        <input type="text" [(ngModel)]="searchText" placeholder="Search" name="searchText" class="input">
+        <input class="button" type="submit" value="Go">
+      </form>
+      <table class="table">
+        <thead>
+          <th>
+            Name
+          </th>
+          <th>
+            Climate
+          </th>
+          <th>
+            Diameter
+          </th>
+          <th>
+            Gravity
+          </th>
+          <th class="is-hidden-mobile">
+            Orbital Period
+          </th>
+          <th class="is-hidden-mobile">
+              Population
+          </th>
+          <th class="is-hidden-mobile">
+              Rotation Period
+          </th>
+          <th class="is-hidden-mobile">
+              Surface Water
+          </th>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let item of peoplePage.results">
+            <td style="cursor: pointer;" (click)="openModal(item)">
+              {{ item.name }}
+            </td>
+            <td>
+              {{ item.climate }}
+            </td>
+            <td>
+              {{ item.diameter }}
+            </td>
+            <td>
+              {{ item.gravity }}
+            </td>
+            <td class="is-hidden-mobile">
+                {{ item.orbital_period }}
+            </td>
+            <td class="is-hidden-mobile">
+                {{ item.population }}
+            </td>
+            <td class="is-hidden-mobile">
+                {{ item.rotation_period }}
+            </td>
+            <td class="is-hidden-mobile">
+                {{ item.surface_water }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table__buttons">
+        <button (click)="goToPage(peoplePage.previous)" [disabled]="!peoplePage.previous" class="button">Previous</button>
+        <button (click)="goToPage(peoplePage.next)" [disabled]="!peoplePage.next" class="button">Next</button>
+      </div>
+    </div>
+  
+  </div>

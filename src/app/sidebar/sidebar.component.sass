@@ -1,0 +1,36 @@
+.sidebar
+    position: fixed
+    top: 0
+    left: 0
+    width: 210px
+    height: 100vh
+    background-color: #161642
+    transform: translateX(-210px)
+    transition: transform .2s
+    display: flex
+    flex-flow: column
+    justify-content: center
+    z-index: 2
+    &.opened
+        transform: none
+    .sidebar__menu
+        .menu__item
+            margin-bottom: 1px
+            width: 100%
+            background-color: rgba(255, 255, 255, 0.1)
+            padding: 15px 15px
+            text-align: center
+            color: white
+            cursor: pointer
+            &.active
+                text-decoration: underline
+                pointer-events: none
+                opacity: .6
+
+    .sidebar__close
+        right: 25px
+        top: 20px
+        position: absolute
+        color: #ffe5e5
+        font-size: 34px
+        cursor: pointer
